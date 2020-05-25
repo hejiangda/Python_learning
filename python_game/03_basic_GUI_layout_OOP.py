@@ -25,6 +25,16 @@ class GameObject(object):
     def delete(self):
         self.canvas.delete(self.item)
 
+class Ball(GameObject):
+    def __init__(self,canvas,x,y):
+        self.radius=10
+        self.direction=[1,-1]
+        self.speed=10
+        item=canvas.create_oval(x-self.radius,y-self.radius,
+                                x+self.radius,y+self.radius,
+                                fill='white')
+        super(Ball,self).__init__(canvas,item)
+
 if __name__=='__main__':
     root=tk.Tk()
     root.title('Hello,Pong!')
@@ -36,4 +46,6 @@ if __name__=='__main__':
     # game_object.move(20,-10)
     # print(game_object.get_position())
     # game_object.delete()
+    # ball=Ball(game.canvas,20,20)
+
     game.mainloop()
